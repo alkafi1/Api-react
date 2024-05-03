@@ -9,7 +9,7 @@ import InputField from '../components/InputField';
 import PasswordInput from '../components/PassowrdInput';
 import SubmitButton from '../components/SubmitButton';
 import LoadingSpinner from '../components/LoadingSpinner';
-import SocialLoginButtons from '../components/SocialLoginButtons';
+import SocialLoginButtons from './SocialLoginButton';
 import AuthHeader from '../components/AuthHeader';
 import { useAuth } from '../Contexts/AuthContext';
 
