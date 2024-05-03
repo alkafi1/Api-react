@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FiBell, FiMessageCircle } from 'react-icons/fi'; // Import notification and message icons from react-icons library
-import { logo } from './constants/Constant';
+import { logo } from '../constants/Constant';
 import { useAuth } from '../Contexts/AuthContext';
 
 const Header = () => {

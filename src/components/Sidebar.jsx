@@ -1,7 +1,7 @@
 // Sidebar.js
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { logo } from './constants/Constant';
+import { logo } from '../constants/Constant';
 
 const Sidebar = () => {
     const [isExpanded, setIsExpanded] = useState(true);

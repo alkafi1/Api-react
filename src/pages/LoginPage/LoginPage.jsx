@@ -2,7 +2,7 @@
 
 import React from 'react';
 import LoginForm from '../../components/LoginForm';
-import { logo } from '../../components/constants/Constant'; // Importing the logo constant
+import { logo } from '../../constants/Constant';
 
 const LoginPage = () => {
   return (
