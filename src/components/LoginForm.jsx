@@ -1,7 +1,8 @@
 // LoginForm.js
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import InputField from '../components/InputField';
@@ -11,12 +12,20 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import SocialLoginButtons from '../components/SocialLoginButtons';
 import AuthHeader from '../components/AuthHeader';
 
+
 const LoginPage = ({ logo }) => {
+  const location = useLocation();
+  const successMessage = location.state?.successMessage;
+
+  useEffect(() => {
+    if (successMessage) {
+      toast.success(successMessage);
+    }
+  }, [successMessage]);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
-  const [passwordVisible, setPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -24,9 +33,7 @@ const LoginPage = ({ logo }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +45,7 @@ const LoginPage = ({ logo }) => {
       });
       toast.success(response.data.message);
       setLoading(false);
-      navigate('/dashboard');
+      navigate('/login');
     } catch (error) {
       console.log("Error:", error);
       if (error.response && error.response.status === 401) {
@@ -57,12 +64,11 @@ const LoginPage = ({ logo }) => {
           <AuthHeader logo={logo} title="Login"></AuthHeader>
           {loading && <LoadingSpinner />}
           <form onSubmit={handleSubmit}>
-            <InputField label="Email" type="email" name="email"  placeholder="Enter your email" onChange={handleChange} />
-            <PasswordInput label="Password" name="password"  onChange={handleChange} togglePasswordVisibility={togglePasswordVisibility} />
+            <InputField label="Email" type="email" name="email" placeholder="Enter your email" onChange={handleChange} />
+            <PasswordInput label="Password" name="password" onChange={handleChange} />
             <SocialLoginButtons></SocialLoginButtons>
             <SubmitButton label="Login" />
           </form>
-          
         </div>
       </div>
       <ToastContainer />

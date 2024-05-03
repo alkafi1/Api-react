@@ -1,11 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { FaEye, FaEyeSlash, FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { css } from "@emotion/react";
-import { BarLoader } from "react-spinners";
 import AuthHeader from './AuthHeader';
 import InputField from '../components/InputField';
 import PasswordInput from '../components/PassowrdInput';
@@ -13,12 +10,6 @@ import SubmitButton from '../components/SubmitButton';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SocialLoginButtons from '../components/SocialLoginButtons';
 
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
-  width: 600px;
-`;
 
 const SignUpForm = ({ logo }) => {
   const [formData, setFormData] = useState({
@@ -32,8 +23,6 @@ const SignUpForm = ({ logo }) => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,7 +40,7 @@ const SignUpForm = ({ logo }) => {
         email: '',
         password: ''
       });
-      navigate('/login');
+      navigate('/login', { state: { successMessage: response.data.message } }); // Pass success message as state
     } catch (error) {
       console.log("Error:", error); // Log the error object to the console
       if (error.response && error.response.status === 422) {
@@ -74,7 +63,7 @@ const SignUpForm = ({ logo }) => {
       <div className="flex justify-center items-center h-full">
         <div className="bg-white bg-opacity-75 p-8 rounded-lg shadow-md w-96">
           <AuthHeader logo={logo} title="Sign Up"></AuthHeader>
-          {loading && <BarLoader css={override} color={"#36D7B7"} loading={loading} />}
+          {loading && <LoadingSpinner />}
           <form onSubmit={handleSubmit}>
 
             <InputField label="Username" type="text" name="username" placeholder="Enter your username" onChange={handleChange} />
