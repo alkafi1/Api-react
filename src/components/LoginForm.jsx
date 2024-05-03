@@ -45,7 +45,7 @@ const LoginPage = ({ logo }) => {
       });
       toast.success(response.data.message);
       setLoading(false);
-      navigate('/login');
+      navigate('/dashboard');
     } catch (error) {
       console.log("Error:", error);
       if (error.response && error.response.status === 401) {
