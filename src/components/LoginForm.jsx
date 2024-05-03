@@ -11,9 +11,11 @@ import SubmitButton from '../components/SubmitButton';
 import LoadingSpinner from '../components/LoadingSpinner';
 import SocialLoginButtons from '../components/SocialLoginButtons';
 import AuthHeader from '../components/AuthHeader';
+import { useAuth } from '../Contexts/AuthContext';
 
 
 const LoginPage = ({ logo }) => {
+  const { login } = useAuth();
   const location = useLocation();
   const successMessage = location.state?.successMessage;
 
@@ -45,6 +47,10 @@ const LoginPage = ({ logo }) => {
       });
       toast.success(response.data.message);
       setLoading(false);
+      
+      const userData = response.data; // Assuming your API returns user data upon successful login
+      login(userData); // Call the login function from the AuthContext with the user data
+      
       navigate('/dashboard');
     } catch (error) {
       console.log("Error:", error);
