@@ -1,7 +1,6 @@
-// DashboardHomPage.js
+// DashboardHomePage.js
 import React from 'react';
-import Sidebar from '../../components/Sidebar';
-import Header from '../../components/Header';
+import Layout from '../../Layouts/DashboardLayout/DashboardLayout';
 import { useAuth } from '../../Contexts/AuthContext';
 import { Navigate } from 'react-router-dom'; 
 
@@ -9,25 +8,16 @@ const DashboardHomePage = () => {
   const { user } = useAuth();
 
   if (!user) {
-    return <Navigate to="/login" />; // Use Navigate instead of Redirect
+    return <Navigate to="/login" />;
   }
 
   return (
-    <div className="flex">
-      {/* Sidebar */}
-      <Sidebar />
-
-      {/* Main Content */}
-      <div className="flex flex-col w-full">
-        {/* Header */}
-        <Header />
-
-        {/* Main Content */}
-        <div className="p-6">
-          {/* Add your main conhvtent components here */}
-        </div>
-      </div>
-    </div>
+    <Layout>
+      {/* Add your main content for the dashboard page here */}
+      {/* For example: */}
+      <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
+      <p>Welcome to the Dashboard Page. This is where you can view your dashboard content.</p>
+    </Layout>
   );
 };
 

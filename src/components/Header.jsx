@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FiBell, FiMessageCircle } from 'react-icons/fi'; // Import notification and message icons from react-icons library
-import { logo } from '../constants/Constant';
+import { logo } from './constants/Constant';
 import { useAuth } from '../Contexts/AuthContext';
 
 const Header = () => {
@@ -102,7 +102,7 @@ const Header = () => {
                                 </NavLink>
                                 <hr className="my-1 border-gray-200" />
                                 <NavLink
-                                    className="block px-4 py-2 text-gray-800 hover:bg-gray-300" onClick={handleLogout} 
+                                    className="block px-4 py-2 text-gray-800 hover:bg-gray-300" onClick={handleLogout}
                                 >
                                     Logout
                                 </NavLink>

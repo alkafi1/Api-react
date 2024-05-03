@@ -1,20 +1,17 @@
-// In your App.js or index.js file
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SignUpPage from './pages/SignUp/SignUpPage';
+import { AuthProvider } from './Contexts/AuthContext';
 import LoginPage from './pages/LoginPage/LoginPage';
 import DashboardHomePage from './pages/Dashboard/DashboardHomePage';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage'; // Import the NotFoundPage component
 
 function App() {
   return (
     <Router>
-      <AuthProvider> {/* Wrap your Routes with AuthProvider */}
+      <AuthProvider>
         <Routes>
-          <Route path="*" element={<NotFoundPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/dashboard" element={<DashboardHomePage />} /> {/* Corrected the path */}
+          <Route path="/dashboard" element={<DashboardHomePage />} />
+          <Route path="*" element={<NotFoundPage />} /> {/* Add this route for "page not found" */}
         </Routes>
       </AuthProvider>
     </Router>
