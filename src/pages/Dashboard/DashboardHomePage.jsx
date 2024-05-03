@@ -16,7 +16,7 @@ const DashboardHomePage = () => {
         
         {/* Main Content */}
         <div className="p-6">
-          {/* Add your main content components here */}
+          {/* Add your main conhvtent components here */}
         </div>
       </div>
     </div>
