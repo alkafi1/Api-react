@@ -16,7 +16,7 @@ const Sidebar = () => {
             <div className="flex items-center justify-between py-4 px-4">
                 <div className="flex items-center">
                     {isExpanded ? (
-                        <img src={logo} alt="Logo" className="h-8 w-8" />
+                        <img src={logo} alt="Logo" className="h-8" />
                     ) : (
                         <button
                             onClick={toggleSidebar}
@@ -68,8 +68,8 @@ const Sidebar = () => {
             <nav className={`flex-grow `}>
                 <NavLink
                     exact
-                    to="/dashboard" 
-                    className="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white"
+                    to="/dashboard"
+                    className="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white active:text-white"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
