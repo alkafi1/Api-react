@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FiBell, FiMessageCircle } from 'react-icons/fi'; // Import notification and message icons from react-icons library
 import { logo } from '../constants/Constant';
+import { useAuth } from '../Contexts/AuthContext';
 
 const Header = () => {
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isMessageOpen, setIsMessageOpen] = useState(false);
     const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+    const { logout } = useAuth();
 
     const toggleProfile = () => {
         setIsProfileOpen(!isProfileOpen);
@@ -26,7 +28,10 @@ const Header = () => {
         setIsProfileOpen(false);
         setIsMessageOpen(false);
     };
-
+    const handleLogout = () => {
+        logout(); // Call the logout function to clear user authentication
+        navigate('/login'); // Redirect to the login page after logout
+    };
     return (
         <header className="bg-white shadow h-12">
             <div className="container mx-auto px-4 flex items-center justify-end h-full">
@@ -97,8 +102,7 @@ const Header = () => {
                                 </NavLink>
                                 <hr className="my-1 border-gray-200" />
                                 <NavLink
-                                    to="/logout"
-                                    className="block px-4 py-2 text-gray-800 hover:bg-gray-300"
+                                    className="block px-4 py-2 text-gray-800 hover:bg-gray-300" onClick={handleLogout} 
                                 >
                                     Logout
                                 </NavLink>
