@@ -88,7 +88,8 @@ const Sidebar = () => {
                     <span className={isExpanded ? 'ml-2' : 'hidden'}>Dashboard</span>
                 </NavLink>
                 <NavLink
-                    to="/products"
+                    exact
+                    to="/category"
                     className="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white"
                 >
                     <svg
