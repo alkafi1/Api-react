@@ -95,6 +95,7 @@ const Header = () => {
                             <div className="py-1">
                                 <NavLink
                                     to="/profile"
+                                    exact
                                     className="block px-4 py-2 text-gray-800 hover:bg-gray-300"
                                     onClick={() => setIsProfileOpen(false)}
                                 >

@@ -10,12 +10,9 @@ const DashboardHomePage = () => {
   if (!user) {
     return <Navigate to="/login" />;
   }
-
   return (
     <Layout>
-      {/* Add your main content for the dashboard page here */}
-      {/* For example: */}
-      <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
+      <h3>Hello, <span className="text-2xl font-bold mb-4">{user['user'].name}</span> Welcome To <span className="text-2xl font-bold mb-4">Dashboard</span></h3>
       <p>Welcome to the Dashboard Page. This is where you can view your dashboard content.</p>
     </Layout>
   );

@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
         <Header />
         {/* Main Content */}
         <div className="p-6">
-          {children}
+        {children}
         </div>
       </div>
     </div>

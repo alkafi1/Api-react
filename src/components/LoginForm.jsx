@@ -48,10 +48,11 @@ const LoginPage = ({ logo }) => {
       toast.success(response.data.message);
       setLoading(false);
       
-      const user = response.data.token; // Assuming your API returns user data upon successful login
-      login(user); // Call the login function from the AuthContext with the user data
+      const user = response.data; // Assuming your API returns user data upon successful login
+      const token = response.data.token; // Assuming your API returns user data upon successful login
+      login(user,token); // Call the login function from the AuthContext with the user data
       
-      navigate('/dashboard');
+      navigate('/');
     } catch (error) {
       console.log("Error:", error);
       if (error.response && error.response.status === 401) {
